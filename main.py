@@ -32,22 +32,10 @@ for receipt in data2:
         else:
             combinationDict[combination] += 1
 
-#file = open("itemDict.csv", 'w')
-#writer = csv.writer(file)
-#for i in itemDict:
-#    writer.writerow([i, itemDict[i]])
-
-#file = open("combinationDict.csv", 'w')
-#writer = csv.writer(file)
-#for i in combinationDict:
-#    writer.writerow([i, combinationDict[i]])
-#mutualInformation = []
-
 for combination in combinationDict:
     if combinationDict[combination]/N > 0.01:
         #mutualInformation.append([combination, math.log10((combinationDict[combination])/((itemDict[combination[0]]/N)*(itemDict[combination[1]]/N)))])
         mutualInformation.append([combination, (combinationDict[combination]/N)*math.log10(combinationDict[combination]*N/(itemDict[combination[0]]*itemDict[combination[1]]))])
-
 
 mutualInformation.sort(key=lambda x: x[1], reverse=True)
 file = open("mutualInformation.csv", 'w')
